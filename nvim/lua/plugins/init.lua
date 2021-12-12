@@ -52,5 +52,15 @@ require("paq")({
 
   -- Ale plugin
   "dense-analysis/ale",
-  {"neoclide/coc.nvim", branch= "release"}
+  { "neoclide/coc.nvim", branch = "release" },
+
+  "kdheepak/lazygit.nvim",
+
+  {
+    "lewis6991/gitsigns.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+    config = "require('plugins.gitsigns')",
+    event = "BufRead",
+  },
+  { "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" },
 })
