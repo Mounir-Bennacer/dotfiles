@@ -14,8 +14,6 @@ end
 
 require("plugins")
 
-require("gitsigns")
-
 -- Do not source the default filetype.vim
 vim.g.did_load_filetypes = 1
 
@@ -47,7 +45,14 @@ require("nvim-treesitter.configs").setup({
 -- gitsigns setup
 require("gitsigns").setup({
   numhl = true,
-  signcolumn = false,
+  signcolumn = true,
+  signs = {
+    add = { hl = "GitGutterAdd", text = "│", numhl = "GitSignsAddNr" },
+    change = { hl = "GitGutterChange", text = "│", numhl = "GitSignsChangeNr" },
+    delete = { hl = "GitGutterDelete", text = "_", numhl = "GitSignsDeleteNr" },
+    topdelete = { hl = "GitGutterDelete", text = "‾", numhl = "GitSignsDeleteNr" },
+    changedelete = { hl = "GitGutterChange", text = "~", numhl = "GitSignsChangeNr" },
+  },
 })
 
 -- Session

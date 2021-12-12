@@ -91,10 +91,10 @@ map("n", "<leader>ca", '<cmd>lua require("telescope.builtin").lsp_code_actions()
 map("n", "<leader>cs", '<cmd>lua require("telescope.builtin").lsp_document_symbols()<cr>')
 map("n", "<leader>cd", '<cmd>lua require("telescope.builtin").lsp_document_diagnostics()<cr>')
 map("n", "<leader>cr", '<cmd>lua require("telescope.builtin").lsp_references()<cr>')
-map('i', '<F2>', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
-map('n', '<leader>cn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
-map('v', '<leader>cn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
-map('n', '<leader>ci', '<cmd> lua vim.lsp.diagnostic.show_line_diagnostics()<cr>')
+map("i", "<F2>", '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
+map("n", "<leader>cn", '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
+map("v", "<leader>cn", '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
+map("n", "<leader>ci", "<cmd> lua vim.lsp.diagnostic.show_line_diagnostics()<cr>")
 
 -- Easier split mappings
 map("n", "<Leader><Down>", "<C-W><C-J>", { silent = true })
@@ -105,6 +105,9 @@ map("n", "<Leader>;", "<C-W>R", { silent = true })
 map("n", "<Leader>[", "<C-W>_", { silent = true })
 map("n", "<Leader>]", "<C-W>|", { silent = true })
 map("n", "<Leader>=", "<C-W>=", { silent = true })
+
+-- lazygit
+map("n", "<Leader>k", "<cmd>:LazyGit<cr>", { silent = true })
 
 -- Hop
 -- require("hop").setup()
