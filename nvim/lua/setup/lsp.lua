@@ -1,3 +1,23 @@
+-- LSP this is needed for LSP completions in CSS along with the snippets plugin
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    "documentation",
+    "detail",
+    "additionalTextEdits",
+  },
+}
+
+-- Different machine VAR for office
+local envMachine = os.getenv("MACHINE")
+if envMachine == "work" then
+  machineCmd =
+    "/System/Volumes/Data/usr/local/lib/node_modules/vscode-langservers-extracted/bin/vscode-css-language-server"
+else
+  machineCmd = "vscode-css-language-server"
+end
+
 -- LSP Server config
 require("lspconfig").cssls.setup({
   cmd = { machineCmd, "--stdio" },
@@ -32,7 +52,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   virtual_text = false,
   signs = true,
   underline = true,
-  update_in_insert = false,
+  update_on_insert = false,
 })
 
 local signs = {
@@ -46,16 +66,5 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = nil })
 end
 
--- LSP Saga config & keys https://github.com/glepnir/lspsaga.nvim
-local saga = require("lspsaga")
-saga.init_lsp_saga({
-  code_action_icon = " ",
-  definition_preview_icon = "  ",
-  diagnostic_header_icon = "   ",
-  error_sign = " ",
-  finder_definition_icon = "  ",
-  finder_reference_icon = "  ",
-  hint_sign = "⚡",
-  infor_sign = "",
-  warn_sign = "",
-})
+vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focusable=false, source = 'always'})]])
+
