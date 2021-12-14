@@ -78,11 +78,12 @@ return require("packer").startup({
     use({
       "lewis6991/gitsigns.nvim",
       requires = { "nvim-lua/plenary.nvim" },
-      event = "BufReadPre",
       config = get_setup("gitsigns"),
+      event = "BufReadPre",
     })
 
     use("p00f/nvim-ts-rainbow")
+    use("kdheepak/lazygit.nvim")
 
     use({ "jose-elias-alvarez/null-ls.nvim", config = get_setup("null-ls") })
     use({ "neovim/nvim-lspconfig", config = get_setup("lsp") })

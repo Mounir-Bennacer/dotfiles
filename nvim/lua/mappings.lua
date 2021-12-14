@@ -99,6 +99,9 @@ map("n", "<Leader>[", "<C-W>_", { silent = true })
 map("n", "<Leader>]", "<C-W>|", { silent = true })
 map("n", "<Leader>=", "<C-W>=", { silent = true })
 
+-- lazygit
+map("n", "<Leader>l", "<cmd>:LazyGit<cr>", { silent = true })
+
 -- Hop
 -- map("n", "h", "<cmd>lua require'hop'.hint_words()<cr>")
 -- map("n", "l", "<cmd>lua require'hop'.hint_lines()<cr>")
