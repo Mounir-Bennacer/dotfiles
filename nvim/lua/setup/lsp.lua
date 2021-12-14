@@ -45,7 +45,17 @@ require("lspconfig").tsserver.setup({
     client.resolved_capabilities.document_formatting = false
   end,
 })
-
+require("lspconfig").golangci_lint_ls.setup({
+  cmd = { "golangci-lint-langserver" },
+  filetypes = { "go", "gomod" },
+  init_options = {
+    command = { "golangci-lint", "run", "--enable-all", "--disable", "lll", "--out-format", "json" },
+  },
+})
+require("lspconfig").gopls.setup({
+  cmd = { "gopls" },
+  filetypes = { "go", "gomod" },
+})
 -- LSP Prevents inline buffer annotations
 vim.lsp.diagnostic.show_line_diagnostics()
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -67,4 +77,3 @@ for type, icon in pairs(signs) do
 end
 
 vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focusable=false, source = 'always'})]])
-

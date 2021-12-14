@@ -29,7 +29,7 @@ return require("packer").startup({
     -- Packer can manage itself
     use("wbthomason/packer.nvim")
     use({ "nathom/filetype.nvim", config = get_setup("filetype") })
-    use({ "EdenEast/nightfox.nvim", config = get_setup("nightfox") })
+    use({ "EdenEast/nightfox.nvim", config = get_setup("themes.nightfox") })
     use({ "kyazdani42/nvim-web-devicons" })
     use({
       "nvim-lualine/lualine.nvim",
@@ -115,6 +115,7 @@ return require("packer").startup({
     })
     use({ "Shatur/neovim-session-manager", config = get_setup("session") })
     use({ "windwp/nvim-ts-autotag" })
+    use({ "pineapplegiant/spaceduck", branch = "main" })
 
     use({
       "winston0410/range-highlight.nvim",
@@ -123,6 +124,8 @@ return require("packer").startup({
     })
     use({ "filipdutescu/renamer.nvim", config = get_setup("renamer") })
     use({ "luukvbaal/stabilize.nvim", config = get_setup("stabilize") })
+
+    use({ "fatih/vim-go" })
     use({
       "simrat39/symbols-outline.nvim",
       cmd = { "SymbolsOutline" },
