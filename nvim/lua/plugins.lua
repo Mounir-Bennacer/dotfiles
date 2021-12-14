@@ -126,6 +126,7 @@ return require("packer").startup({
     use({ "luukvbaal/stabilize.nvim", config = get_setup("stabilize") })
 
     use({ "fatih/vim-go" })
+    use({ "Mofiqul/dracula.nvim" })
     use({
       "simrat39/symbols-outline.nvim",
       cmd = { "SymbolsOutline" },
