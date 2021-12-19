@@ -6,40 +6,40 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- Map leader to space
+-- MAP LEADER TO SPACE
 vim.g.mapleader = " "
 
--- Nvim Tree
+-- NVIM TREE
 map("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true })
 map("n", "<leader>u", ":NvimTreeFindFile<CR>", { silent = true })
 
--- Update Plugins
+-- UPDATE PLUGINS
 map("n", "<Leader>u", ":PackerSync<CR>")
 
--- Open nvimrc file
+-- OPEN NVIMRC FILE
 map("n", "<Leader>v", "<cmd>e $MYVIMRC<CR>")
 
--- Source nvimrc file
+-- SOURCE NVIMRC FILE
 map("n", "<Leader>sv", ":luafile %<CR>")
 
--- Quick new file
+-- QUICK NEW FILE
 map("n", "<Leader>n", "<cmd>enew<CR>")
 
--- Easy select all of file
+-- EASY SELECT ALL OF FILE
 map("n", "<Leader>sa", "ggVG<c-$>")
 
--- Make visual yanks place the cursor back where started
+-- MAKE VISUAL YANKS PLACE THE CURSOR BACK WHERE STARTED
 map("v", "y", "ygv<Esc>")
 
--- Easier file save
+-- EASIER FILE SAVE
 map("n", "<Leader>w", "<cmd>:w<CR>")
 map("n", "<Delete>", "<cmd>:w<CR>")
 
--- Tab to switch buffers in Normal mode
+-- TAB TO SWITCH BUFFERS IN NORMAL MODE
 map("n", "<Tab>", ":bnext<CR>")
 map("n", "<S-Tab>", ":bprevious<CR>")
 
--- More molecular undo of text
+-- MORE MOLECULAR UNDO OF TEXT
 -- map("i", ",", ",<c-g>u")
 map("i", ".", ".<c-g>u")
 map("i", "!", "!<c-g>u")
@@ -47,27 +47,27 @@ map("i", "?", "?<c-g>u")
 map("i", ";", ";<c-g>u")
 map("i", ":", ":<c-g>u")
 
--- Keep search results centred
+-- KEEP SEARCH RESULTS CENTRED
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 map("n", "J", "mzJ`z")
 
--- Make Y yank to end of the line
+-- MAKE Y YANK TO END OF THE LINE
 map("n", "Y", "y$")
 
--- Line bubbling
+-- LINE BUBBLING
 map("n", "<c-j>", "<cmd>m .+1<CR>==", { silent = true })
 map("n", "<c-k>", "<cmd>m .-2<CR>==", { silent = true })
 map("v", "<c-j>", ":m '>+1<CR>==gv=gv", { silent = true })
 map("v", "<c-k>", ":m '<-2<CR>==gv=gv", { silent = true })
 
---After searching, pressing escape stops the highlight
+--AFTER SEARCHING, PRESSING ESCAPE STOPS THE HIGHLIGHT
 map("n", "<esc>", ":noh<cr><esc>", { silent = true })
 
 -- Easy add date/time
 map("n", "<Leader>t", "\"=strftime('%c')<CR>Pa", { silent = true })
 
--- Telescope
+-- TELESCOPE
 map("n", "<Leader>1", ":Telescope sessions [save_current=true]<CR>")
 map("n", "<leader>p", '<cmd>lua require("telescope.builtin").find_files()<cr>')
 map("n", "<leader>r", '<cmd>lua require("telescope.builtin").registers()<cr>')
@@ -89,7 +89,7 @@ map("v", "<leader>cn", '<cmd>lua require("renamer").rename()<cr>', { noremap = t
 
 map("n", "<leader>ci", "<cmd> lua vim.diagnostic.open_float()<cr>")
 
--- Easier split mappings
+-- EASIER SPLIT MAPPINGS
 map("n", "<Leader><Down>", "<C-W><C-J>", { silent = true })
 map("n", "<Leader><Up>", "<C-W><C-K>", { silent = true })
 map("n", "<Leader><Right>", "<C-W><C-L>", { silent = true })
@@ -99,14 +99,32 @@ map("n", "<Leader>[", "<C-W>_", { silent = true })
 map("n", "<Leader>]", "<C-W>|", { silent = true })
 map("n", "<Leader>=", "<C-W>=", { silent = true })
 
--- lazygit
+-- LAZYGIT
 map("n", "<Leader>l", "<cmd>:LazyGit<cr>", { silent = true })
 
--- Hop
--- map("n", "h", "<cmd>lua require'hop'.hint_words()<cr>")
--- map("n", "l", "<cmd>lua require'hop'.hint_lines()<cr>")
--- map("v", "h", "<cmd>lua require'hop'.hint_words()<cr>")
--- map("v", "l", "<cmd>lua require'hop'.hint_lines()<cr>")
+-- DAP
+map("n", "<leader>dh", ':lua require"dap".toggle_breakpoint()<CR>')
+map("n", "<leader>dH", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+map("n", "<c-k>", ':lua require"dap".step_out()<CR>')
+map("n", "<c-l>", ':lua require"dap".step_into()<CR>')
+map("n", "<c-j>", ':lua require"dap".step_over()<CR>')
+map("n", "<c-h>", ':lua require"dap".continue()<CR>')
+map("n", "<leader>dn", ':lua require"dap".run_to_cursor()<CR>')
+map("n", "<leader>dk", ':lua require"dap".up()<CR>')
+map("n", "<leader>dj", ':lua require"dap".down()<CR>')
+map("n", "<leader>dc", ':lua require"dap".terminate()<CR>')
+map("n", "<leader>dr", ':lua require"dap".repl.toggle({}, "vsplit")<CR><C-w>l')
+map("n", "<leader>de", ':lua require"dap".set_exception_breakpoints({"all"})<CR>')
+map("n", "<leader>da", ':lua require"debugHelper".attach()<CR>')
+map("n", "<leader>dA", ':lua require"debugHelper".attachToRemote()<CR>')
+map("n", "<leader>di", ':lua require"dap.ui.widgets".hover()<CR>')
+map("n", "<leader>d?", ':lua local widgets=require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>')
+
+-- HOP
+map("n", "h", "<cmd>lua require'hop'.hint_words()<cr>")
+map("n", "l", "<cmd>lua require'hop'.hint_lines()<cr>")
+map("v", "h", "<cmd>lua require'hop'.hint_words()<cr>")
+map("v", "l", "<cmd>lua require'hop'.hint_lines()<cr>")
 
 -- Symbols outline
 map("n", "<leader>o", ":SymbolsOutline<cr>")

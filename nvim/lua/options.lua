@@ -18,10 +18,10 @@ opt.incsearch = true -- Shows the match while typing
 opt.joinspaces = false -- No double spaces with join
 vim.o.lazyredraw = true
 opt.linebreak = true -- Stop words being broken on wrap
-opt.number = true -- Show line numbers
+opt.number = false -- Show line numbers
 opt.list = true -- Show some invisible characters
 opt.listchars = { tab = " ", trail = "·" }
-opt.relativenumber = true
+opt.relativenumber = false
 opt.scrolloff = 4 -- Lines of context
 opt.shiftround = true -- Round indent
 opt.shiftwidth = 4 -- Size of an indent

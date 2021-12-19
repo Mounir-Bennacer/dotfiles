@@ -31,9 +31,10 @@ cmp.setup({
     completeopt = "menu,menuone,noinsert",
   },
   sources = {
-    { name = "nvim_lsp" },
+    { name = "npm" },
     { name = "vsnip" },
-    { name = "buffer" },
+    { name = "nvim_lsp" },
+    { name = "buffer", keyword_length = 5 },
   },
   formatting = {
     format = lspkind.cmp_format({

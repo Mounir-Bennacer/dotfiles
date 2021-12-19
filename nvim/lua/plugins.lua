@@ -61,6 +61,7 @@ return require("packer").startup({
     use({
       "hrsh7th/nvim-cmp",
       requires = {
+        { "David-Kunz/cmp-npm" },
         { "hrsh7th/cmp-nvim-lsp" },
         { "hrsh7th/cmp-nvim-lua" },
         { "hrsh7th/cmp-buffer" },
@@ -126,12 +127,25 @@ return require("packer").startup({
     use({ "filipdutescu/renamer.nvim", config = get_setup("renamer") })
     use({ "luukvbaal/stabilize.nvim", config = get_setup("stabilize") })
 
+    use({ "drewtempelmeyer/palenight.vim" })
     use({ "fatih/vim-go" })
     use({ "Mofiqul/dracula.nvim" })
+    use({ "mfussenegger/nvim-dap" })
+    use({ "nvim-telescope/telescope-dap.nvim" })
+    use({ "hrsh7th/vim-vsnip" })
+    use({ "hrsh7th/vim-vsnip-integ" })
+    use({ "onsails/lspkind-nvim" })
+    use({ "marko-cerovac/material.nvim" })
+
+    use({ "theHamsta/nvim-dap-virtual-text" })
     use({
       "simrat39/symbols-outline.nvim",
       cmd = { "SymbolsOutline" },
       setup = get_setup("outline"),
+    })
+    use({
+      "neoclide/coc.nvim",
+      branch = "release",
     })
     if packer_bootstrap then
       require("packer").sync()
