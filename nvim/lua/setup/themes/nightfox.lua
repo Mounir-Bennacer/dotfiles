@@ -1,4 +1,4 @@
--- cmd([[colorscheme "spaceduck"]]) -- Put your favorite colorscheme here
+-- cmd([[colorscheme "dracula"]]) -- Put your favorite colorscheme here
 
 -- Nightfox config
 local nightfox = require("nightfox")

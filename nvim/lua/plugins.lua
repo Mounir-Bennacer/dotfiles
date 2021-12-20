@@ -143,6 +143,7 @@ return require("packer").startup({
       cmd = { "SymbolsOutline" },
       setup = get_setup("outline"),
     })
+    use({ "github/copilot.vim" })
     use({
       "neoclide/coc.nvim",
       branch = "release",
