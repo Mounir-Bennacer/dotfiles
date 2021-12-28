@@ -52,7 +52,25 @@ return require("packer").startup({
       config = get_setup("treesitter"),
       run = ":TSUpdate",
     })
-    use("nvim-treesitter/nvim-treesitter-textobjects")
+    use({ "nvim-treesitter/playground" })
+    use({
+      "romgrk/nvim-treesitter-context",
+      config = function()
+        require("treesitter-context.config").setup({ enable = true })
+      end,
+    })
+    use({
+      "folke/todo-comments.nvim",
+      requires = "nvim-lua/plenary.nvim",
+      config = function()
+        require("todo-comments").setup({
+          -- your configuration comes here
+          -- or leave it empty to use the default settings
+          -- refer to the configuration section below
+        })
+      end,
+    })
+    use({ "nvim-treesitter/nvim-treesitter-textobjects" })
     use({
       "windwp/nvim-autopairs",
       after = "nvim-cmp",
@@ -150,6 +168,8 @@ return require("packer").startup({
       "neoclide/coc.nvim",
       branch = "release",
     })
+    use({ "vim-test/vim-test" })
+
     if packer_bootstrap then
       require("packer").sync()
     end
