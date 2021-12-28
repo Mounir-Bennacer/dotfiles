@@ -27,7 +27,7 @@ end
 return require("packer").startup({
   function(use)
     -- Packer can manage itself
-    use("wbthomason/packer.nvim")
+    use({ "wbthomason/packer.nvim" })
     use({ "nathom/filetype.nvim", config = get_setup("filetype") })
     use({ "EdenEast/nightfox.nvim", config = get_setup("themes.nightfox") })
     use({ "kyazdani42/nvim-web-devicons" })
@@ -132,12 +132,14 @@ return require("packer").startup({
     use({ "Mofiqul/dracula.nvim" })
     use({ "mfussenegger/nvim-dap" })
     use({ "nvim-telescope/telescope-dap.nvim" })
+    use({ "mfussenegger/nvim-dap-python" }) -- Python
     use({ "hrsh7th/vim-vsnip" })
     use({ "hrsh7th/vim-vsnip-integ" })
-    use({ "onsails/lspkind-nvim" })
     use({ "marko-cerovac/material.nvim" })
-
+    use({ "NLKNguyen/papercolor-theme" })
     use({ "theHamsta/nvim-dap-virtual-text" })
+    use({ "puremourning/vimspector" })
+    use({ "nvim-telescope/telescope-vimspector.nvim" })
     use({
       "simrat39/symbols-outline.nvim",
       cmd = { "SymbolsOutline" },

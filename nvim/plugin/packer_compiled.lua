@@ -242,6 +242,11 @@ _G.packer_plugins = {
     path = "/Users/mounirbennacer/.local/share/nvim/site/pack/packer/start/nvim-dap",
     url = "https://github.com/mfussenegger/nvim-dap"
   },
+  ["nvim-dap-python"] = {
+    loaded = true,
+    path = "/Users/mounirbennacer/.local/share/nvim/site/pack/packer/start/nvim-dap-python",
+    url = "https://github.com/mfussenegger/nvim-dap-python"
+  },
   ["nvim-dap-virtual-text"] = {
     loaded = true,
     path = "/Users/mounirbennacer/.local/share/nvim/site/pack/packer/start/nvim-dap-virtual-text",
@@ -294,6 +299,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/mounirbennacer/.local/share/nvim/site/pack/packer/start/palenight.vim",
     url = "https://github.com/drewtempelmeyer/palenight.vim"
+  },
+  ["papercolor-theme"] = {
+    loaded = true,
+    path = "/Users/mounirbennacer/.local/share/nvim/site/pack/packer/start/papercolor-theme",
+    url = "https://github.com/NLKNguyen/papercolor-theme"
   },
   ["plenary.nvim"] = {
     loaded = true,
@@ -356,6 +366,11 @@ _G.packer_plugins = {
     path = "/Users/mounirbennacer/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
     url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
   },
+  ["telescope-vimspector.nvim"] = {
+    loaded = true,
+    path = "/Users/mounirbennacer/.local/share/nvim/site/pack/packer/start/telescope-vimspector.nvim",
+    url = "https://github.com/nvim-telescope/telescope-vimspector.nvim"
+  },
   ["telescope.nvim"] = {
     commands = { "Telescope" },
     config = { 'require("setup/telescope")' },
@@ -389,6 +404,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/mounirbennacer/.local/share/nvim/site/pack/packer/start/vim-vsnip-integ",
     url = "https://github.com/hrsh7th/vim-vsnip-integ"
+  },
+  vimspector = {
+    loaded = true,
+    path = "/Users/mounirbennacer/.local/share/nvim/site/pack/packer/start/vimspector",
+    url = "https://github.com/puremourning/vimspector"
   },
   ["zen-mode.nvim"] = {
     config = { 'require("setup/zen-mode")' },
@@ -431,22 +451,6 @@ end
 time([[Setup for symbols-outline.nvim]], true)
 require("setup/outline")
 time([[Setup for symbols-outline.nvim]], false)
--- Config for: nightfox.nvim
-time([[Config for nightfox.nvim]], true)
-require("setup/themes.nightfox")
-time([[Config for nightfox.nvim]], false)
--- Config for: zen-mode.nvim
-time([[Config for zen-mode.nvim]], true)
-require("setup/zen-mode")
-time([[Config for zen-mode.nvim]], false)
--- Config for: null-ls.nvim
-time([[Config for null-ls.nvim]], true)
-require("setup/null-ls")
-time([[Config for null-ls.nvim]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-require("setup/lsp")
-time([[Config for nvim-lspconfig]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
 require("setup/tree")
@@ -455,30 +459,46 @@ time([[Config for nvim-tree.lua]], false)
 time([[Config for filetype.nvim]], true)
 require("setup/filetype")
 time([[Config for filetype.nvim]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-require("setup/cmp")
-time([[Config for nvim-cmp]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
 require("setup/treesitter")
 time([[Config for nvim-treesitter]], false)
--- Config for: range-highlight.nvim
-time([[Config for range-highlight.nvim]], true)
-require("setup/range-highlight")
-time([[Config for range-highlight.nvim]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+require("setup/cmp")
+time([[Config for nvim-cmp]], false)
 -- Config for: stabilize.nvim
 time([[Config for stabilize.nvim]], true)
 require("setup/stabilize")
 time([[Config for stabilize.nvim]], false)
--- Config for: neovim-session-manager
-time([[Config for neovim-session-manager]], true)
-require("setup/session")
-time([[Config for neovim-session-manager]], false)
+-- Config for: nightfox.nvim
+time([[Config for nightfox.nvim]], true)
+require("setup/themes.nightfox")
+time([[Config for nightfox.nvim]], false)
+-- Config for: range-highlight.nvim
+time([[Config for range-highlight.nvim]], true)
+require("setup/range-highlight")
+time([[Config for range-highlight.nvim]], false)
 -- Config for: renamer.nvim
 time([[Config for renamer.nvim]], true)
 require("setup/renamer")
 time([[Config for renamer.nvim]], false)
+-- Config for: null-ls.nvim
+time([[Config for null-ls.nvim]], true)
+require("setup/null-ls")
+time([[Config for null-ls.nvim]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+require("setup/lsp")
+time([[Config for nvim-lspconfig]], false)
+-- Config for: zen-mode.nvim
+time([[Config for zen-mode.nvim]], true)
+require("setup/zen-mode")
+time([[Config for zen-mode.nvim]], false)
+-- Config for: neovim-session-manager
+time([[Config for neovim-session-manager]], true)
+require("setup/session")
+time([[Config for neovim-session-manager]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-autopairs ]]
@@ -496,8 +516,8 @@ time([[Defining lazy-load commands]], false)
 
 -- Keymap lazy-loads
 time([[Defining lazy-load keymaps]], true)
-vim.cmd [[noremap <silent> gc <cmd>lua require("packer.load")({'Comment.nvim'}, { keys = "gc", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> gcc <cmd>lua require("packer.load")({'Comment.nvim'}, { keys = "gcc", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> gc <cmd>lua require("packer.load")({'Comment.nvim'}, { keys = "gc", prefix = "" }, _G.packer_plugins)<cr>]]
 time([[Defining lazy-load keymaps]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
@@ -505,7 +525,7 @@ vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'lualine.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au BufReadPre * ++once lua require("packer.load")({'hop.nvim', 'nvim-colorizer.lua', 'gitsigns.nvim'}, { event = "BufReadPre *" }, _G.packer_plugins)]]
+vim.cmd [[au BufReadPre * ++once lua require("packer.load")({'nvim-colorizer.lua', 'gitsigns.nvim', 'hop.nvim'}, { event = "BufReadPre *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles(1) end

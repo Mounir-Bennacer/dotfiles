@@ -9,9 +9,16 @@ end
 -- MAP LEADER TO SPACE
 vim.g.mapleader = " "
 
+-- VIMSPECTOR
+map("n", "<leader>vl", ":call vimspector#Launch()<CR>")
+map("n", "<leader>vr", ":VimspectorReset<CR>")
+map("n", "<leader>ve", ":VimspectorEval<CR>")
+map("n", "<leader>vw", ":VimspectorWatch<CR>")
+map("n", "<leader>vo", ":VimspectorShowOutput<CR>")
+map("n", "<leader>vi", ":VimspectorBalloonEval<CR>")
+
 -- NVIM TREE
 map("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true })
-map("n", "<leader>u", ":NvimTreeFindFile<CR>", { silent = true })
 
 -- UPDATE PLUGINS
 map("n", "<Leader>u", ":PackerSync<CR>")
@@ -103,22 +110,48 @@ map("n", "<Leader>=", "<C-W>=", { silent = true })
 map("n", "<Leader>l", "<cmd>:LazyGit<cr>", { silent = true })
 
 -- DAP
-map("n", "<leader>dh", ':lua require"dap".toggle_breakpoint()<CR>')
-map("n", "<leader>dH", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
-map("n", "<c-k>", ':lua require"dap".step_out()<CR>')
-map("n", "<c-l>", ':lua require"dap".step_into()<CR>')
-map("n", "<c-j>", ':lua require"dap".step_over()<CR>')
-map("n", "<c-h>", ':lua require"dap".continue()<CR>')
-map("n", "<leader>dn", ':lua require"dap".run_to_cursor()<CR>')
-map("n", "<leader>dk", ':lua require"dap".up()<CR>')
-map("n", "<leader>dj", ':lua require"dap".down()<CR>')
-map("n", "<leader>dc", ':lua require"dap".terminate()<CR>')
-map("n", "<leader>dr", ':lua require"dap".repl.toggle({}, "vsplit")<CR><C-w>l')
-map("n", "<leader>de", ':lua require"dap".set_exception_breakpoints({"all"})<CR>')
-map("n", "<leader>da", ':lua require"debugHelper".attach()<CR>')
-map("n", "<leader>dA", ':lua require"debugHelper".attachToRemote()<CR>')
-map("n", "<leader>di", ':lua require"dap.ui.widgets".hover()<CR>')
-map("n", "<leader>d?", ':lua local widgets=require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>')
+-- map("n", "<leader>dh", ':lua require"dap".toggle_breakpoint()<CR>')
+-- map("n", "<leader>dH", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+-- map("n", "<c-k>", ':lua require"dap".step_out()<CR>')
+-- map("n", "<c-l>", ':lua require"dap".step_into()<CR>')
+-- map("n", "<c-j>", ':lua require"dap".step_over()<CR>')
+-- map("n", "<c-h>", ':lua require"dap".continue()<CR>')
+-- map("n", "<leader>dn", ':lua require"dap".run_to_cursor()<CR>')
+-- map("n", "<leader>dk", ':lua require"dap".up()<CR>')
+-- map("n", "<leader>dj", ':lua require"dap".down()<CR>')
+-- map("n", "<leader>dc", ':lua require"dap".terminate()<CR>')
+-- map("n", "<leader>dr", ':lua require"dap".repl.toggle({}, "vsplit")<CR><C-w>l')
+-- map("n", "<leader>de", ':lua require"dap".set_exception_breakpoints({"all"})<CR>')
+-- map("n", "<leader>da", ':lua require"debugHelper".attach()<CR>')
+-- map("n", "<leader>dA", ':lua require"debugHelper".attachToRemote()<CR>')
+-- map("n", "<leader>di", ':lua require"dap.ui.widgets".hover()<CR>')
+-- map("n", "<leader>d?", ':lua local widgets=require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>')
+
+require("telescope").load_extension("dap")
+require("dbg.python")
+
+local utils = require("utils")
+
+utils.map("n", "<leader>dc", '<cmd>lua require"dap".continue()<CR>')
+utils.map("n", "<leader>dsv", '<cmd>lua require"dap".step_over()<CR>')
+utils.map("n", "<leader>dsi", '<cmd>lua require"dap".step_into()<CR>')
+utils.map("n", "<leader>dso", '<cmd>lua require"dap".step_out()<CR>')
+utils.map("n", "<leader>dtb", '<cmd>lua require"dap".toggle_breakpoint()<CR>')
+utils.map("n", "<leader>dsbr", '<cmd>lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>')
+utils.map(
+  "n",
+  "<leader>dsbm",
+  '<cmd>lua require"dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<CR>'
+)
+utils.map("n", "<leader>dro", '<cmd>lua require"dap".repl.open()<CR>')
+utils.map("n", "<leader>drl", '<cmd>lua require"dap".repl.run_last()<CR>')
+
+-- telescope-dap
+utils.map("n", "<leader>dcc", '<cmd>lua require"telescope".extensions.dap.commands{}<CR>')
+utils.map("n", "<leader>dco", '<cmd>lua require"telescope".extensions.dap.configurations{}<CR>')
+utils.map("n", "<leader>dlb", '<cmd>lua require"telescope".extensions.dap.list_breakpoints{}<CR>')
+utils.map("n", "<leader>dv", '<cmd>lua require"telescope".extensions.dap.variables{}<CR>')
+utils.map("n", "<leader>df", '<cmd>lua require"telescope".extensions.dap.frames{}<CR>')
 
 -- HOP
 map("n", "h", "<cmd>lua require'hop'.hint_words()<cr>")
