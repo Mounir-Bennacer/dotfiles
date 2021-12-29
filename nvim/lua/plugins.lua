@@ -106,6 +106,9 @@ return require("packer").startup({
 
     use({ "jose-elias-alvarez/null-ls.nvim", config = get_setup("null-ls") })
     use({ "neovim/nvim-lspconfig", config = get_setup("lsp") })
+    use({ "williamboman/nvim-lsp-installer", config = get_setup("lsp-installer") })
+    use({ "ray-x/lsp_signature.nvim", config = get_setup("signature") })
+    use({ "metakirby5/codi.vim" })
     use({
       "numToStr/Comment.nvim",
       opt = true,
@@ -169,7 +172,7 @@ return require("packer").startup({
       branch = "release",
     })
     use({ "vim-test/vim-test" })
-
+    use({ "ellisonleao/glow.nvim" })
     if packer_bootstrap then
       require("packer").sync()
     end
