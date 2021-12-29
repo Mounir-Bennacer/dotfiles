@@ -50,7 +50,7 @@ function M.setup(n)
   opt.mouse = "a"
   opt.guicursor =
     "n-v-c-sm:block-blinkwait50-blinkon50-blinkoff50,i-ci-ve:ver25-Cursor-blinkon100-blinkoff100,r-cr-o:hor20"
-  opt.undodir = vim.fn.stdpath("setup") .. "/undo"
+  opt.undodir = vim.fn.stdpath("config") .. "/undo"
   opt.undofile = true
   vim.cmd("au TextYankPost * lua vim.highlight.on_yank {on_visual = true}") -- disabled in visual mode
   -- Give me some fenced codeblock goodness

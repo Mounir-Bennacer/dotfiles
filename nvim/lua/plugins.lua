@@ -115,7 +115,8 @@ return require("packer").startup({
     use("p00f/nvim-ts-rainbow")
     use("kdheepak/lazygit.nvim")
 
-    use({ "jose-elias-alvarez/null-ls.nvim", config = get_setup("null-ls") })
+    -- use({ "jose-elias-alvarez/null-ls.nvim", config = get_setup("null-ls") })
+    use({ "jose-elias-alvarez/null-ls.nvim" })
     use({ "jose-elias-alvarez/nvim-lsp-ts-utils" })
     use({
       "neovim/nvim-lspconfig",
@@ -273,9 +274,10 @@ return require("packer").startup({
       "folke/trouble.nvim",
       event = "VimEnter",
       cmd = { "TroubleToggle", "Trouble" },
-      config = function()
-        require("trouble").setup({ auto_open = false })
-      end,
+      config = get_setup("trouble"),
+      -- config = function()
+      --   require("trouble").setup({ auto_open = false })
+      -- end,
     })
     use({
       "SirVer/ultisnips",
