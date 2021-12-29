@@ -10,7 +10,7 @@ local lsp_providers = {
 }
 
 local function setup_servers()
-  local lsp_installer = require "nvim-lsp-installer"
+  local lsp_installer = require("nvim-lsp-installer")
 
   require("config.lsp.null-ls").setup()
 
@@ -21,7 +21,7 @@ local function setup_servers()
         server:setup(server_opts)
       end
     else
-      local lsputils = require "config.lsp.utils"
+      local lsputils = require("config.lsp.utils")
       local opts = {
         on_attach = lsputils.lsp_attach,
         capabilities = lsputils.get_capabilities(),

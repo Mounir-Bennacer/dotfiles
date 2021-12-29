@@ -142,3 +142,4 @@ map("n", "<leader>tf", ":TestFile<cr>")
 map("n", "<leader>ts", ":TestSuite<cr>")
 map("n", "<leader>tl", ":TestLast<cr>")
 map("n", "<leader>tv", ":TestVisit<cr>")
+

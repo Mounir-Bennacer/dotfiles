@@ -2,6 +2,19 @@
 local action_state = require("telescope.actions.state")
 local actions = require("telescope.actions")
 require("telescope").setup({
+  find_command = {
+    "rg",
+    "--no-heading",
+    "--with-filename",
+    "--line-number",
+    "--column",
+    "--smart-case",
+  },
+  -- use_less = true,
+  file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+  grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+  qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+
   defaults = {
     winblend = 20,
     sorting_strategy = "descending",
@@ -78,3 +91,12 @@ require("telescope").setup({
 
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("sessions")
+require("telescope").load_extension("neoclip")
+require("telescope").load_extension("zoxide")
+require("telescope").load_extension("ultisnips")
+require("telescope").load_extension("repo")
+require("telescope").load_extension("gh")
+require("telescope").load_extension("arecibo")
+require("telescope").load_extension("media_files")
+require("telescope").load_extension("frecency")
+require("telescope").load_extension("gkeep")
