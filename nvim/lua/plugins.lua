@@ -304,10 +304,12 @@ return require("packer").startup({
     use({
       "kkoomen/vim-doge",
       run = ":call doge#install()",
-      config = function()
-        require("config.doge").setup()
-      end,
+      config = get_setup("doge"),
       event = "VimEnter",
+    })
+    use({
+      "stevearc/gkeep.nvim",
+      run = ":UpdateRemotePlugins",
     })
     use({
       "michaelb/sniprun",
@@ -341,13 +343,7 @@ return require("packer").startup({
         require("neoclip").setup()
       end,
     })
-    -- use {
-    --   "gelguy/wilder.nvim",
-    --   run = ":UpdateRemotePlugins",
-    --   config = function()
-    --     require("config.wilder").setup()
-    --   end,
-    -- }
+
     if packer_bootstrap then
       print("Setting up Neovim. Restart required after installation!")
       require("packer").sync()
