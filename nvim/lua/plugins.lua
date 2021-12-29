@@ -116,6 +116,30 @@ return require("packer").startup({
       config = get_setup("comment"),
     })
     use({
+      "tanvirtin/vgit.nvim",
+      event = "BufWinEnter",
+      config = function()
+        require("vgit").setup()
+      end,
+    })
+    use({
+      "sindrets/diffview.nvim",
+      cmd = {
+        "DiffviewOpen",
+        "DiffviewClose",
+        "DiffviewToggleFiles",
+        "DiffviewFocusFiles",
+      },
+    })
+    use ({ "unblevable/quick-scope", event = "VimEnter" })
+    use ({ "voldikss/vim-floaterm", event = "VimEnter" })
+    use ({
+      "folke/which-key.nvim",
+      config = function()
+        require("config.whichkey").setup()
+      end,
+    })
+    use({
       "nvim-telescope/telescope.nvim",
       module = "telescope",
       cmd = "Telescope",
@@ -171,8 +195,21 @@ return require("packer").startup({
       "neoclide/coc.nvim",
       branch = "release",
     })
-    use({ "vim-test/vim-test" })
+    use({
+      "rcarriga/vim-ultest",
+      config = get_setup("test"),
+      run = ":UpdateRemotePlugins",
+      requires = { "vim-test/vim-test" },
+    })
     use({ "ellisonleao/glow.nvim" })
+    use({ "rafi/awesome-vim-colorschemes" })
+    use({
+      "rcarriga/nvim-notify",
+      event = "VimEnter",
+      config = function()
+        vim.notify = require("notify")
+      end,
+    })
     if packer_bootstrap then
       require("packer").sync()
     end
