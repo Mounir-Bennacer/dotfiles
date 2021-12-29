@@ -68,10 +68,10 @@ function M.lsp_highlight(client, bufnr)
 end
 
 function M.lsp_config(client, bufnr)
-  require("lsp_signature").on_attach {
+  require("lsp_signature").on_attach({
     bind = true,
     handler_opts = { border = "single" },
-  }
+  })
 
   local function buf_set_option(...)
     vim.api.nvim_buf_set_option(...)
@@ -79,17 +79,17 @@ function M.lsp_config(client, bufnr)
   buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
   -- Key mappings
-  local keymap = require "utils.keymap"
+  local keymap = require("utils.keymap")
   for mode, mapping in pairs(lsp_keymappings) do
     keymap.map(mode, mapping)
   end
 
   -- LSP and DAP menu
-  local whichkey = require "config.whichkey"
+  local whichkey = require("setup.whichkey")
   whichkey.register_lsp(client)
 
   if client.resolved_capabilities.document_formatting then
-    vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()"
+    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()")
   end
 end
 
@@ -149,7 +149,7 @@ function M.setup_server(server, config)
     options[k] = v
   end
 
-  local lspconfig = require "lspconfig"
+  local lspconfig = require("lspconfig")
   lspconfig[server].setup(vim.tbl_deep_extend("force", options, {}))
 
   local cfg = lspconfig[server]

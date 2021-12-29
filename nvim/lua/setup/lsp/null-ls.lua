@@ -1,11 +1,11 @@
 local M = {}
 
-local lsputils = require "config.lsp.utils"
+local lsputils = require("setup.lsp.utils")
 
 CONFIG = {}
 
 function M.setup()
-  local nls = require "null-ls"
+  local nls = require("null-ls")
   local sources = {
     nls.builtins.formatting.prettierd,
     nls.builtins.formatting.eslint_d,
@@ -18,14 +18,14 @@ function M.setup()
     -- nls.builtins.diagnostics.markdownlint,
     -- nls.builtins.diagnostics.vale,
   }
-  nls.setup {
+  nls.setup({
     sources = sources,
     on_attach = lsputils.lsp_attach,
     on_exit = lsputils.lsp_exit,
     on_init = lsputils.lsp_init,
     capabilities = lsputils.get_capabilities(),
     flags = { debounce_text_changes = 150 },
-  }
+  })
 end
 
 return M

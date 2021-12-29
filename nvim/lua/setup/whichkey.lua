@@ -45,7 +45,7 @@ local mappings = {
     t = { "<Cmd>terminal<CR>", "New terminal" },
     e = { "!!$SHELL<CR>", "Execute line" },
     z = {
-      "<Cmd>lua require('config.telescope').search_dotfiles()<CR>",
+      "<Cmd>lua require('setup.telescope').search_dotfiles()<CR>",
       "Configuration",
     },
     r = { "<Cmd>luafile %<Cr>", "Reload lua file" },
@@ -146,7 +146,7 @@ local mappings = {
   p = {
     name = "Project",
     s = {
-      "<Cmd>lua require('config.telescope').switch_projects()<CR>",
+      "<Cmd>lua require('setup.telescope').switch_projects()<CR>",
       "Search files",
     },
     p = {
@@ -428,7 +428,7 @@ function M.register_dap_vimspector()
   local wk = require("which-key")
   wk.register({
     ["dx"] = {
-      ":lua require('config.whichkey').register_dap_nvim_dap()<CR>",
+      ":lua require('setup.whichkey').register_dap_nvim_dap()<CR>",
       "Switch to nvim-dap",
     },
   }, opts)
@@ -440,7 +440,7 @@ end
 function M.register_dap_nvim_dap()
   local wk = require("which-key")
   wk.register({
-    ["dx"] = { ":lua require('config.whichkey').register_dap_vimspector()<CR>", "Switch to vimspector" },
+    ["dx"] = { ":lua require('setup.whichkey').register_dap_vimspector()<CR>", "Switch to vimspector" },
   }, opts)
   wk.register(dap_nvim_dap_mappings, opts)
   vim.g.my_debugger = "d"

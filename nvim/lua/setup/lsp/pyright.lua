@@ -22,7 +22,7 @@ function M.autocmds()
       augroup PYTHON
         autocmd!
 
-        autocmd BufEnter *.py lua require("config.lsp.pyright").keymappings()
+        autocmd BufEnter *.py lua require("setup.lsp.pyright").keymappings()
       augroup END
 
     ]],
@@ -40,7 +40,7 @@ function M.keymappings()
     nowait = true,
   }
 
-  local wk = require "which-key"
+  local wk = require("which-key")
   local mappings = {
     ["r"] = {
       name = "Run",

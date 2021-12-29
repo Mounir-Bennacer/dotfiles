@@ -1,6 +1,6 @@
 local M = {}
 
-local lsputils = require "config.lsp.utils"
+local lsputils = require("setup.lsp.utils")
 
 local config = {
   capabilities = lsputils.get_capabilities(),
@@ -11,7 +11,7 @@ local config = {
 }
 
 function M.setup(installed_server)
-  require("rust-tools").setup {
+  require("rust-tools").setup({
     tools = {
       hover_actions = {
         auto_focus = true,
@@ -25,7 +25,7 @@ function M.setup(installed_server)
     --   flags = { debounce_text_changes = 150 },
     --   cmd = installed_server._default_options.cmd,
     -- },
-  }
+  })
 
   M.autocmds()
   M.keymappings()
@@ -40,7 +40,7 @@ function M.autocmds()
         autocmd!
 
         autocmd FileType rust packadd termdebug
-        autocmd BufEnter *.rs lua require("config.lsp.rust_analyzer").keymappings()
+        autocmd BufEnter *.rs lua require("setup.lsp.rust_analyzer").keymappings()
       augroup END
 
     ]],
@@ -58,7 +58,7 @@ function M.keymappings()
     nowait = true,
   }
 
-  local wk = require "which-key"
+  local wk = require("which-key")
   local mappings = {
     ["r"] = {
       name = "Run",

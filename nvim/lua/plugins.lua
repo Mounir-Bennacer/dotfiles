@@ -116,6 +116,7 @@ return require("packer").startup({
     use("kdheepak/lazygit.nvim")
 
     use({ "jose-elias-alvarez/null-ls.nvim", config = get_setup("null-ls") })
+    use({ "jose-elias-alvarez/nvim-lsp-ts-utils" })
     use({
       "neovim/nvim-lspconfig",
       config = function()
@@ -221,10 +222,6 @@ return require("packer").startup({
       setup = get_setup("outline"),
     })
     use({ "github/copilot.vim" })
-    use({
-      "neoclide/coc.nvim",
-      branch = "release",
-    })
     use({
       "rcarriga/vim-ultest",
       config = get_setup("test"),

@@ -1,6 +1,6 @@
 local M = {}
 
-local lsputils = require "config.lsp.utils"
+local lsputils = require("setup.lsp.utils")
 
 function M.lsp_attach(client, bufnr)
   lsputils.lsp_attach(client, bufnr)
@@ -9,10 +9,10 @@ function M.lsp_attach(client, bufnr)
   client.resolved_capabilities.document_formatting = false
   client.resolved_capabilities.document_range_formatting = false
 
-  local ts_utils = require "nvim-lsp-ts-utils"
+  local ts_utils = require("nvim-lsp-ts-utils")
 
   -- defaults
-  ts_utils.setup {
+  ts_utils.setup({
     debug = false,
     disable_commands = false,
     enable_import_on_completion = true,
@@ -48,7 +48,7 @@ function M.lsp_attach(client, bufnr)
     -- filter diagnostics
     filter_out_diagnostics_by_severity = {},
     filter_out_diagnostics_by_code = {},
-  }
+  })
 
   -- required to fix code action ranges and filter diagnostics
   ts_utils.setup_client(client)
@@ -77,8 +77,8 @@ function M.autocmds()
       augroup TYPESCRIPT
         autocmd!
 
-        autocmd BufEnter *.ts lua require("config.lsp.tsserver").keymappings()
-        autocmd BufEnter *.js lua require("config.lsp.tsserver").keymappings()
+        autocmd BufEnter *.ts lua require("setup.lsp.tsserver").keymappings()
+        autocmd BufEnter *.js lua require("setup.lsp.tsserver").keymappings()
       augroup END
 
     ]],
@@ -96,7 +96,7 @@ function M.keymappings()
     nowait = true,
   }
 
-  local wk = require "which-key"
+  local wk = require("which-key")
   local mappings = {
     ["r"] = {
       name = "Run",

@@ -1,6 +1,6 @@
 local M = {}
 
-local lsputils = require "config.lsp.utils"
+local lsputils = require("setup.lsp.utils")
 
 -- DATA_PATH = vim.fn.stdpath "data"
 
@@ -22,8 +22,8 @@ function M.config(installed_server)
           diagnostics = { globals = { "vim" } },
           workspace = {
             library = {
-              [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-              [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+              [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
             },
             maxPreload = 100000,
             preloadFileSize = 1000,
@@ -39,7 +39,7 @@ function M.setup(installed_server)
   installed_server:setup(opts)
 
   local luadev = require("lua-dev").setup(M.config(installed_server))
-  local lspconfig = require "lspconfig"
+  local lspconfig = require("lspconfig")
   lspconfig.sumneko_lua.setup(luadev)
 end
 
