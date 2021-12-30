@@ -17,11 +17,11 @@ function M.nvim_dap_setup()
   require("dapui").setup {}
 
   -- languages
-  require("config.dap.python").setup()
-  require("config.dap.rust").setup()
-  require("config.dap.go").setup()
-  require("config.dap.node").setup()
-  require("config.dap.lua").setup()
+  require("setup.dap.python").setup()
+  require("setup.dap.rust").setup()
+  require("setup.dap.go").setup()
+  require("setup.dap.node").setup()
+  require("setup.dap.lua").setup()
 
   -- nvim-dap
   vim.fn.sign_define("DapBreakpoint", { text = "🟥", texthl = "", linehl = "", numhl = "" })

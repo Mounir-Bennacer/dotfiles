@@ -1,7 +1,7 @@
 local M = {}
 
 local lsp_providers = {
-  rust_analyzer = true,
+  rust_analyzer = false,
   tsserver = true,
   pyright = true,
   gopls = true,
@@ -15,10 +15,21 @@ local function setup_servers()
   require("setup.lsp.null-ls").setup()
 
   lsp_installer.on_server_ready(function(server)
+    Settings = {
+        Lua = {
+            diagnostics = {
+                enable = true,
+                globals = {
+                    vim = true,
+                },
+            }
+        }
+    }
+
     if lsp_providers[server.name] then
       local server_opts = require("setup.lsp." .. server.name).setup(server)
       if server_opts then
-        server:setup(server_opts)
+        server:setup({server_opts, Settings})
       end
     else
       local lsputils = require("setup.lsp.utils")
@@ -28,7 +39,7 @@ local function setup_servers()
         on_init = lsputils.lsp_init,
         on_exit = lsputils.lsp_exit,
       }
-      server:setup(opts)
+      server:setup({opts, Settings})
     end
   end)
 end

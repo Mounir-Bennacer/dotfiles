@@ -40,7 +40,11 @@ function M.setup(installed_server)
 
   local luadev = require("lua-dev").setup(M.config(installed_server))
   local lspconfig = require("lspconfig")
-  lspconfig.sumneko_lua.setup(luadev)
+  lspconfig.lua.setup({luadev,
+  settings = {
+    Lua = {
+        diagnostics = { globals = { "vim" }}
+    }}})
 end
 
 return M

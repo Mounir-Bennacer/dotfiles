@@ -274,10 +274,9 @@ return require("packer").startup({
       "folke/trouble.nvim",
       event = "VimEnter",
       cmd = { "TroubleToggle", "Trouble" },
-      config = get_setup("trouble"),
-      -- config = function()
-      --   require("trouble").setup({ auto_open = false })
-      -- end,
+      config = function()
+        require("trouble").setup({ auto_open = false })
+      end,
     })
     use({
       "SirVer/ultisnips",
