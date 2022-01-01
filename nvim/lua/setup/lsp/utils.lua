@@ -79,7 +79,7 @@ function M.lsp_config(client, bufnr)
   buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
   -- Key mappings
-  local keymap = require("utils.keymap")
+  local keymap = require("mappings")
   for mode, mapping in pairs(lsp_keymappings) do
     keymap.map(mode, mapping)
   end

@@ -94,7 +94,7 @@ map("i", "<F2>", '<cmd>lua require("renamer").rename()<cr>', { noremap = true, s
 map("n", "<leader>cn", '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
 map("v", "<leader>cn", '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
 
-map("n", "<leader>ci", "<cmd> lua vim.diagnostic.open_float()<cr>")
+map("n", "<leader>ci", "<cmd>lua vim.diagnostic.open_float()<cr>")
 
 -- EASIER SPLIT MAPPINGS
 map("n", "<Leader><Down>", "<C-W><C-J>", { silent = true })

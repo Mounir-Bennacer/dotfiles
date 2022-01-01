@@ -61,14 +61,9 @@ return require("packer").startup({
     })
     use({
       "folke/todo-comments.nvim",
-      cmd = { "TodoTrouble", "TodoTelescope" },
       requires = "nvim-lua/plenary.nvim",
       config = function()
-        require("todo-comments").setup({
-          -- your configuration comes here
-          -- or leave it empty to use the default settings
-          -- refer to the configuration section below
-        })
+        require("todo-comments").setup({})
       end,
     })
     use({ "junegunn/vim-easy-align" })
@@ -79,6 +74,7 @@ return require("packer").startup({
       after = "nvim-cmp",
       config = get_setup("autopairs"),
     })
+    use({"kevinoid/vim-jsonc"})
     use({
       "hrsh7th/nvim-cmp",
       requires = {
@@ -176,7 +172,6 @@ return require("packer").startup({
         { "jvgrootveld/telescope-zoxide" },
         { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
         { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-        { "nvim-telescope/telescope-arecibo.nvim", rocks = { "openssl", "lua-http-parser" } },
         { "nvim-telescope/telescope-frecency.nvim", requires = { "tami5/sql.nvim" } },
         { "nvim-telescope/telescope-vimspector.nvim", event = "BufWinEnter" },
         { "nvim-telescope/telescope-dap.nvim" },
@@ -318,9 +313,10 @@ return require("packer").startup({
     -- Better configuration
     use({
       "max397574/better-escape.nvim",
-      config = function()
-        require("better_escape").setup()
-      end,
+      config = get_setup("better-escape"),
+      -- config = function()
+      --   require("better_escape").setup()
+      -- end,
     })
     use({
       "hrsh7th/vim-vsnip",
