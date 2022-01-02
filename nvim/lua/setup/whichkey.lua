@@ -159,16 +159,8 @@ local mappings = {
     },
   },
 
-  -- Easymotion
-  ["<Space>"] = { name = "Easymotion" },
-
   -- Search
   ["s"] = {
-    name = "Search",
-    w = {
-      "<Cmd>lua require('telescope').extensions.arecibo.websearch()<CR>",
-      "Web search",
-    },
     s = { "<Cmd>lua require('spectre').open()<CR>", "Search file" },
     z = { "<Plug>SearchNormal", "Browser search" },
     v = {

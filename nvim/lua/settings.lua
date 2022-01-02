@@ -1,7 +1,7 @@
 local M = {}
 
 function M.auto_cmds()
-  vim.cmd("colorscheme onedark")
+  vim.cmd("colorscheme dracula")
 
   -- Highlight on yank
   -- cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
@@ -109,22 +109,6 @@ function M.auto_cmds()
     [[
         imap <silent><script><expr> <C-s> copilot#Accept("\<CR>")
         let g:copilot_no_tab_map = v:true
-    ]],
-    false
-  )
-
-  -- nnoremap g1 <cmd>!tmux new-window vd <cfile><CR>
-  -- nnoremap g1 <cmd>vsplit term://vd <cfile><CR>
-  -- nnoremap g2 <cmd>lua require("utils.term").send()<CR>
-  -- xnoremap g2 <cmd>lua require("utils.term").send(true)<CR>
-  -- nnoremap ,r :update<CR>:exec '!python3' shellescape(@%, 1)<CR>
-  -- nnoremap ,d :update<CR>:sp term://python3 -m pdb %<CR>
-  -- nnoremap ,n :update<CR>:sp term://nodemon -e py %<CR>
-  vim.api.nvim_exec(
-    [[
-      autocmd BufNewFile  test_*.py	0r ~/.config/nvim/snippets/unittest.py
-      autocmd BufNewFile  *.html	0r ~/.config/nvim/snippets/html5.html
-      xmap <silent> . :normal .<CR>
     ]],
     false
   )

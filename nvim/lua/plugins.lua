@@ -338,6 +338,17 @@ return require("packer").startup({
       end,
     })
 
+    -- Database
+    use {
+      "tpope/vim-dadbod",
+      event = "VimEnter",
+      requires = { "kristijanhusak/vim-dadbod-ui", "kristijanhusak/vim-dadbod-completion" },
+      config = get_setup("dadbod"),
+      -- config = function()
+      --   require("config.dadbod").setup()
+      -- end,
+    }
+
     if packer_bootstrap then
       print("Setting up Neovim. Restart required after installation!")
       require("packer").sync()
