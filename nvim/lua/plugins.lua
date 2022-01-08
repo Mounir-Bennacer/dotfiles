@@ -93,9 +93,6 @@ return require("packer").startup({
         { "hrsh7th/cmp-nvim-lsp-document-symbol" },
         { "hrsh7th/cmp-path" },
         { "hrsh7th/cmp-cmdline" },
-        { "hrsh7th/vim-vsnip" },
-        { "hrsh7th/cmp-vsnip" },
-        { "hrsh7th/vim-vsnip-integ" },
       },
       config = get_setup("cmp"),
     })
@@ -205,7 +202,6 @@ return require("packer").startup({
     use({ "mfussenegger/nvim-dap" })
     use({ "nvim-telescope/telescope-dap.nvim" })
     use({ "mfussenegger/nvim-dap-python" }) -- Python
-    use({ "hrsh7th/vim-vsnip-integ" })
     use({ "theHamsta/nvim-dap-virtual-text" })
     use({ "rcarriga/nvim-dap-ui" })
     use({ "Pocco81/DAPInstall.nvim" })
@@ -226,24 +222,8 @@ return require("packer").startup({
     })
     use({ "ellisonleao/glow.nvim" })
     use({ "sainnhe/gruvbox-material" })
-    use({ "folke/tokyonight.nvim" })
-    use({ "sainnhe/everforest" })
     use({ "sainnhe/edge" })
-    use({ "sainnhe/sonokai" })
-    use({
-      "catppuccin/nvim",
-      as = "catppuccin",
-      config = function()
-        require("catppuccin").setup({})
-      end,
-    })
-    use({ "rebelot/kanagawa.nvim" })
-    use({ "mhartington/oceanic-next" })
-    use({ "bluz71/vim-nightfly-guicolors" })
     use({ "dracula/vim" })
-    use({ "marko-cerovac/material.nvim" })
-    use({ "fenetikm/falcon" })
-    use({ "shaunsingh/nord.nvim" })
     use({ "NLKNguyen/papercolor-theme" })
     use({ "navarasu/onedark.nvim" })
     use({
@@ -318,19 +298,23 @@ return require("packer").startup({
       --   require("better_escape").setup()
       -- end,
     })
-    use({
-      "hrsh7th/vim-vsnip",
-      event = "VimEnter",
-      requires = {
-        "rafamadriz/friendly-snippets",
-        "cstrap/python-snippets",
-        "ylcnfrht/vscode-python-snippet-pack",
-        "xabikos/vscode-javascript",
-        "golang/vscode-go",
-        "rust-lang/vscode-rust",
-      },
+    use ({
+    'hrsh7th/cmp-vsnip',
+    after = 'nvim-cmp',
+    requires = {
+        'hrsh7th/vim-vsnip',
+        "hrsh7th/vim-vsnip-integ",
+        {
+        'rafamadriz/friendly-snippets',
+            "cstrap/python-snippets",
+            "ylcnfrht/vscode-python-snippet-pack",
+            "xabikos/vscode-javascript",
+            "golang/vscode-go",
+            "rust-lang/vscode-rust",
+        after = 'cmp-vsnip'
+        }
+    }
     })
-    use({ "hrsh7th/cmp-vsnip" })
     use({
       "AckslD/nvim-neoclip.lua",
       config = function()
@@ -339,7 +323,7 @@ return require("packer").startup({
     })
 
     -- Database
-    use {
+    use ({
       "tpope/vim-dadbod",
       event = "VimEnter",
       requires = { "kristijanhusak/vim-dadbod-ui", "kristijanhusak/vim-dadbod-completion" },
@@ -347,7 +331,10 @@ return require("packer").startup({
       -- config = function()
       --   require("config.dadbod").setup()
       -- end,
-    }
+    })
+
+    -- development
+    use ({ "b0o/schemastore.nvim" })
 
     if packer_bootstrap then
       print("Setting up Neovim. Restart required after installation!")
