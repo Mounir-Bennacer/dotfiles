@@ -127,10 +127,10 @@ map("n", "<leader>di", ':lua require"dap.ui.widgets".hover()<CR>')
 map("n", "<leader>d?", ':lua local widgets=require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>')
 
 -- HOP
-map("n", "h", "<cmd>lua require'hop'.hint_words()<cr>")
-map("n", "l", "<cmd>lua require'hop'.hint_lines()<cr>")
-map("v", "h", "<cmd>lua require'hop'.hint_words()<cr>")
-map("v", "l", "<cmd>lua require'hop'.hint_lines()<cr>")
+-- map("n", "h", "<cmd>lua require'hop'.hint_words()<cr>")
+-- map("n", "l", "<cmd>lua require'hop'.hint_lines()<cr>")
+-- map("v", "h", "<cmd>lua require'hop'.hint_words()<cr>")
+-- map("v", "l", "<cmd>lua require'hop'.hint_lines()<cr>")
 
 -- Symbols outline
 map("n", "<leader>o", ":SymbolsOutline<cr>")
@@ -141,4 +141,3 @@ map("n", "<leader>tf", ":TestFile<cr>")
 map("n", "<leader>ts", ":TestSuite<cr>")
 map("n", "<leader>tl", ":TestLast<cr>")
 map("n", "<leader>tv", ":TestVisit<cr>")
-

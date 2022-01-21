@@ -18,6 +18,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 vim.api.nvim_command("packadd packer.nvim")
 -- reference for new plugins: https://github.com/alpha2phi/dotfiles/tree/main/config/nvim/lua
+-- https://gist.github.com/benfrain/97f2b91087121b2d4ba0dcc4202d252f
 -- returns the require for use in `config` parameter of packer's use
 -- expects the name of the config file
 function get_setup(name)
@@ -180,11 +181,11 @@ return require("packer").startup({
     use({ "tpope/vim-repeat" })
     use({ "tpope/vim-surround" })
     use({ "wellle/targets.vim" })
-    use({
-      "phaazon/hop.nvim",
-      event = "BufReadPre",
-      config = get_setup("hop"),
-    })
+    -- use({
+    --   "phaazon/hop.nvim",
+    --   event = "BufReadPre",
+    --   config = get_setup("hop"),
+    -- })
     use({ "Shatur/neovim-session-manager", config = get_setup("session") })
     use({ "windwp/nvim-ts-autotag" })
     use({ "pineapplegiant/spaceduck", branch = "main" })
@@ -328,13 +329,13 @@ return require("packer").startup({
       event = "VimEnter",
       requires = { "kristijanhusak/vim-dadbod-ui", "kristijanhusak/vim-dadbod-completion" },
       config = get_setup("dadbod"),
-      -- config = function()
-      --   require("config.dadbod").setup()
-      -- end,
     })
 
     -- development
     use ({ "b0o/schemastore.nvim" })
+
+    -- wim-wiki
+    use ({ "vimwiki/vimwiki" })
 
     if packer_bootstrap then
       print("Setting up Neovim. Restart required after installation!")

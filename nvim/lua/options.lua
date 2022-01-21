@@ -4,7 +4,6 @@ local g = vim.g
 local cmd = vim.cmd
 local opt = vim.opt -- to set options
 
-function M.setup(n)
   -- cmd([[filetype plugin indent on]])
   -- cmd([[syntax enable]])
 
@@ -68,6 +67,3 @@ function M.setup(n)
     - "2" -- I'm not in gradeschool anymore
 
   g.python3_host_prog = "/opt/homebrew/bin/python3"
-end
-
-M.setup()

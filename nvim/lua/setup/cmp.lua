@@ -1,6 +1,10 @@
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_assume_mapped = true
+vim.g.copilot_tab_fallback = ""
+
 lspkind.init {
     with_test = true,
     symbol_map = {
@@ -35,6 +39,20 @@ cmp.setup({
     end,
   },
   mapping = {
+      ["<Tab>"] = function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif vim.fn["vsnip#available"](1) > 0 then
+                -- handle vsnip
+            else
+                local copilot_keys = vim.fn["copilot#Accept"]()
+                if copilot_keys ~= "" then
+                    vim.api.nvim_feedkeys(copilot_keys, "i", true)
+                else
+                    fallback()
+                end
+            end
+        end,
     ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
     ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i", "c" }),
@@ -89,11 +107,3 @@ cmp.setup.cmdline("/", {
     { name = "buffer" },
   },
 })
-
--- cmp.setup.cmdline(":", {
---   sources = cmp.config.sources({
---     { name = "path" },
---   }, {
---     { name = "cmdline" },
---   }),
--- })
