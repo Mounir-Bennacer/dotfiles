@@ -36,23 +36,19 @@ plugins=(
     colored-man-pages
     command-not-found
     common-aliases
-    copydir
+    copypath
     copyfile
     docker
     docker-compose
     dotenv
-    ember-cli
     encode64
     extract
     fancy-ctrl-z
     fd
-    gatsby
     git
     golang
-    jira
     jsontools
     kubectl
-    laravel
     node
     npm
     # npx
@@ -60,9 +56,7 @@ plugins=(
     ripgrep
     # ssh-agent
     tmux
-    tmuxinator
     urltools
-    vscode
     web-search
     z
     gh
@@ -88,17 +82,19 @@ vim-mode-bindkey viins -- redo '^[Z'
 # User Aliases
 source ~/.config/zsh/aliases.zsh
 
-#### FIG ENV VARIABLES ####
-[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
 
-#### FIG ENV VARIABLES ####
-[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
+eval "$(pyenv init --path)"
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+PATH="/Users/mounirbennacer/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/mounirbennacer/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/mounirbennacer/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/mounirbennacer/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/mounirbennacer/perl5"; export PERL_MM_OPT;
