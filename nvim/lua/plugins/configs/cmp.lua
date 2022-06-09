@@ -32,6 +32,7 @@ local options = {
    window = {
       completion = {
          border = border "CmpBorder",
+         winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
       },
       documentation = {
          border = border "CmpDocBorder",
@@ -87,8 +88,8 @@ local options = {
       }),
    },
    sources = {
-      { name = "nvim_lsp" },
       { name = "luasnip" },
+      { name = "nvim_lsp" },
       { name = "buffer" },
       { name = "nvim_lua" },
       { name = "path" },

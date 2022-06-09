@@ -147,7 +147,7 @@ M.lspconfig = {
 
       ["<leader>ra"] = {
          function()
-            vim.lsp.buf.rename()
+            require("ui.renamer").open()
          end,
          "   lsp rename",
       },

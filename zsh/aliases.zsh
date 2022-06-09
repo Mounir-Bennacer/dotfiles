@@ -77,7 +77,6 @@ alias ...="cd ../../../"
 alias ....="cd ../../../../"
 alias gdp="cd ~/Desktop"
 alias gdf="cd ~/dotfiles";
-alias gwk="cd ~/Projects/work"
 alias gdc="cd ~/Documents"
 alias gdl="cd ~/Downloads"
 
@@ -110,6 +109,7 @@ alias glprs='git log -p --reverse --stat'
 alias glps='git log -p --stat'
 alias gt='git difftool --no-prompt' #delta
 alias gwtl='git worktree list'
+alias gw='git worktree'
 alias gyhc='git rev-parse HEAD | pbcopy'
 alias hack='history -75 | rg'
 alias jlc='jest --config=jest.local.js'
