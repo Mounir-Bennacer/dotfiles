@@ -17,16 +17,16 @@ RUN apt-get update && \
   python2 python3 python3-pip python3-neovim g++ ruby-full postgresql-client
 
 # pip2 and python2-neovim
-RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py && \
-  python2 get-pip.py && \
+RUN curl https://bootstrap.pypa.io/pip/3.6/get-pip.py --output get-pip.py && \
+  python3 get-pip.py && \
   rm get-pip.py && \
-  pip2 install neovim
+  pip3 install neovim
 
 # bat install
-ENV BAT_VER 0.17.1
-RUN curl -fLO https://github.com/sharkdp/bat/releases/download/v${BAT_VER}/bat_${BAT_VER}_amd64.deb && \
-  dpkg -i ./bat_${BAT_VER}_amd64.deb && \
-  rm ./bat_${BAT_VER}_amd64.deb
+ENV BAT_VER 0.21.0
+# RUN curl -fLO https://github.com/sharkdp/bat/releases/download/v${BAT_VER}/bat_${BAT_VER}_amd64.deb && \
+#   dpkg -i ./bat_${BAT_VER}_armd64.deb && \
+#   rm ./bat_${BAT_VER}_armd64.deb
 
 RUN apt-get -qq download ripgrep && \
   dpkg --force-overwrite -i ripgrep*.deb
@@ -40,34 +40,33 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 # golang install
-ENV GO_VER 1.17.5
+ENV GO_VER 1.18.3
 WORKDIR /usr/local
 RUN curl -fLO https://golang.org/dl/go${GO_VER}.linux-amd64.tar.gz && \
   tar -xvf go${GO_VER}.linux-amd64.tar.gz && \
   rm go${GO_VER}.linux-amd64.tar.gz
 
 # exa install
-ENV EXA_VER 0.10.1
-RUN mkdir -p /usr/local/bin && \
-  cd /usr/local/bin && \
-  curl -fLO https://github.com/ogham/exa/releases/download/v${EXA_VER}/exa-linux-x86_64-${EXA_VER}.zip && \
-  unzip exa-linux-x86_64-${EXA_VER}.zip && \
-  ln -s exa-linux-x86_64 exa && \
-  rm exa-linux-x86_64-${EXA_VER}.zip && \
-  cd -
+# ENV EXA_VER 0.10.1
+# RUN mkdir -p /usr/local/bin && \
+#   cd /usr/local/bin && \
+#   curl -fLO https://github.com/ogham/exa/releases/download/v${EXA_VER}/exa-linux-armv7-v${EXA_VER}.zip && \
+#   unzip exa-linux-x86_64-${EXA_VER}.zip && \
+#   ln -s exa-linux-x86_64 exa && \
+#   rm exa-linux-x86_64-${EXA_VER}.zip && \
+#   cd -
 
 # install task
 RUN sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
 
 # install migrate
-RUN curl -L https://packagecloud.io/golang-migrate/migrate/gpgkey | apt-key add - && \
-  echo "deb https://packagecloud.io/golang-migrate/migrate/ubuntu/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/migrate.list && \
-  apt-get update && \
-  apt-get install -y migrate
+# RUN curl -L https://packagecloud.io/golang-migrate/migrate/gpgkey | apt-key add - && \
+#   echo "deb https://packagecloud.io/golang-migrate/migrate/ubuntu/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/migrate.list && \
+#   apt-get update && \
+#   apt-get install -y migrate
 
 # neovim helpers
-RUN pip2 install --upgrade pynvim && \
-  pip3 install --upgrade pynvim && \
+RUN pip3 install --upgrade pynvim && \
   gem install neovim
 
 # set up user and environment
@@ -87,8 +86,6 @@ WORKDIR "$HOME"
 ENV GOPATH "$HOME/go"
 ENV PATH "$GOPATH:$PATH"
 ENV GOBIN "$GOPATH/bin"
-RUN go get -u github.com/mitranim/gow && \
-  go get -u github.com/acepukas/essence
 
 # install Oh-My-ZSH
 RUN wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | zsh || true
@@ -109,7 +106,7 @@ RUN mkdir -p "$HOME/.tmux/plugins" && \
   "$HOME/.tmux/plugins/tpm/bin/install_plugins"
 
 # build bat cache now that .config/bat/config is installed
-RUN bat cache --build
+# RUN bat cache --build
 
 # install nvm/Node.js
 ENV NODE_VER "17.3.0"

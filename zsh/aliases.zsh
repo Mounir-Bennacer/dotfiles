@@ -8,7 +8,7 @@
 #
 
 #########################################
-# Shorten common commands               #
+# SHORTEN COMMON COMMANDS               #
 #########################################
 alias ex="chmod +x"
 alias cat="bat"
@@ -51,6 +51,20 @@ alias gl="git log --pretty=format:'%C(Yellow)%h%Creset %ad | %s%d [%C(Green)%an%
 alias gb="git branch"
 alias gbnm="git branch --no-merged"
 alias gc="git checkout"
+alias ghil='gh issue list'
+alias gijs='git init && echo "node_modules" >> .gitignore'
+alias glf='git log --stat'
+alias gld='git log -p --stat'
+alias glprs='git log -p --reverse --stat'
+alias glps='git log -p --stat'
+alias gt='git difftool --no-prompt' #delta
+alias gwl='git worktree list'
+alias gw='git worktree'
+alias gwa='git worktree add'
+alias gwd='git worktree remove'
+alias gyhc='git rev-parse HEAD | pbcopy'
+alias gpr="ggpur"
+alias gs="gst"
 
 #########################################
 # asciinema                             #
@@ -101,16 +115,6 @@ alias esl='node_modules/.bin/eslint .'
 alias exaf='exa -allFI "node_modules|.git|coverage"'
 alias exal='exa -allI "node_modules|.git|coverage"'
 alias exat='exa -aTI "node_modules|.git|coverage"'
-alias ghil='gh issue list'
-alias gijs='git init && echo "node_modules" >> .gitignore'
-alias glf='git log --stat'
-alias gld='git log -p --stat'
-alias glprs='git log -p --reverse --stat'
-alias glps='git log -p --stat'
-alias gt='git difftool --no-prompt' #delta
-alias gwtl='git worktree list'
-alias gw='git worktree'
-alias gyhc='git rev-parse HEAD | pbcopy'
 alias hack='history -75 | rg'
 alias jlc='jest --config=jest.local.js'
 alias ldot='exa -ld .*'
@@ -119,7 +123,8 @@ alias mj4='make CMAKE_BUILD_TYPE=RelWithDebInfo -j4'
 alias smi='sudo make install'
 # not using multipass much, using `mps` in work-related alias
 # alias mps='multipass shell'
-alias ng='npm init -y && git init && echo "node_modules" >> .gitignore'
+alias ygi='yarn init -y && git init && echo "node_modules" >> .gitignore'
+alias dev='yarn dev'
 alias nij='node inspect node_modules/.bin/jest --runInBand'
 alias nun='nvim -u NONE'
 alias nvc='cd ~/.config/nvim && nvim ~/.config/nvim/init.lua'
@@ -140,16 +145,11 @@ alias vdro='nvim -d -R'
 alias vp='pbpaste | nvim'
 alias v=nvim
 
-alias gpr="ggpur"
-alias gs="gst"
-
 alias pe="path-extractor"
 
 alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
 
 alias -g Z='| fzf'
-
-alias lg='lazygit'
 
 alias tolower="tr '[:upper:]' '[:lower:]'"
 alias toupper="tr '[:lower:]' '[:upper:]'"
@@ -172,37 +172,10 @@ diffstring() {
     diff <(echo $1) <(echo $2)
 }
 
-classnames() {
-    local in=$1
-    [[ -z "$in" ]] && read in
-
-    echo \"$(echo $in | sed 's/  / /g' | sed 's/ /", "/g')\"
-}
-
-cn() {
-    local in=$1
-    [[ -z "$in" ]] && read in
-
-    classnames $1 | pbcopy
-}
-
 cdwhich() {
     cd $(dirname $(which $1))
-}
-
-cdparent() {
-    cd $(dirname $1)
-}
-
-stat-octal() {
-    stat -f %Mp%Lp $1
 }
 
 loop() {
     for x in {1..$1}; do $@[2,-1]; done
 }
-
-ansi-colors() {
-    for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
-}
-
