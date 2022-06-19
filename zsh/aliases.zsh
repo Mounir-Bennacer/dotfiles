@@ -90,7 +90,7 @@ alias ..="cd .."
 alias ...="cd ../../../"
 alias ....="cd ../../../../"
 alias gdp="cd ~/Desktop"
-alias gdf="cd ~/dotfiles";
+alias gdf="cd ~/github.com/mounir-bennacer/dotfiles";
 alias gdc="cd ~/Documents"
 alias gdl="cd ~/Downloads"
 

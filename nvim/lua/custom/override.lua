@@ -128,6 +128,7 @@ M.treesitter = {
 M.nvimtree = {
    git = {
       enable = true,
+      ignore = false,
    },
 
    renderer = {
@@ -137,6 +138,11 @@ M.nvimtree = {
             git = true,
          },
       },
+   },
+
+   view = {
+      auto_resize = true,
+      width = 30,
    },
 }
 
